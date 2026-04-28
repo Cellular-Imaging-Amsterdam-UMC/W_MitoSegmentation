@@ -1,0 +1,114 @@
+# Based on example https://github.com/bilayer-containers/bilayers/blob/main/algorithms/cellpose_inference/config.yaml
+
+docker_image:
+  org: Cellular-Imaging-Amsterdam-UMC
+  name: W_MitoSegmentation
+  tag: "1.0.0"
+  platform: "linux/amd64"
+
+algorithm_folder_name: "W_MitoSegmentation"
+
+exec_function: 
+  name: "generate_cli_command"
+  cli_command: "napari"
+  hidden_args: 
+    # dummy example
+    # - cli_tag: "--save_omezarr"
+    #   value: "True"
+    #   append_value: False
+    #   cli_order: 3
+
+inputs:
+  - name: dir
+    type: image
+    label: "Input Image Directory"
+    subtype: 
+      - grayscale
+      - color
+      - binary
+    description: "Path to the directory of input images"
+    cli_tag: "--dir"
+    cli_order: 0
+    default: "directory"
+    optional: False
+    format: 
+      - tiff
+      - ometiff
+      - omezarr
+    folder_name: "/input_images"
+    file_count: "multiple"
+    unique_string:
+      - "*"
+    section_id: "inputs"
+    mode: "beginner"
+    depth: True
+    timepoints: True
+    tiled: True
+    pyramidal: True
+  - name: custom_model
+    type: file
+    label: "Add Model"
+    description: "Custom model to be used for segmentation, if not using pretrained model"
+    cli_tag: "--add_model"
+    cli_order: 0
+    default: "single"
+    optional: True
+    format: 
+      - unix
+    folder_name: "/models"
+    file_count: "single"
+    unique_string:
+      - "*"
+    section_id: "inputs"
+    mode: "advanced"
+
+outputs:
+  - name: omezarr_images
+    type: image
+    label: "Segmented Ome-zarr images"
+    subtype: 
+      - label
+    description: "Segmented image if --save_omezarr flag is true."
+    cli_tag: "None"
+    cli_order: 0
+    default: "directory"
+    optional: True
+    format: 
+      - omezarr
+    folder_name: "/output_images"
+    file_count: "single"
+    unique_string:
+      - "_cp_masks"
+    section_id: "outputs"
+    mode: "beginner"
+    depth: True
+    timepoints: True
+    tiled: True
+    pyramidal: True
+    
+parameters:
+  # Output Arguments
+  - name: save_omezarr
+    type: checkbox
+    label: "Save Ome-zarr"
+    description: "save segmentation as Ome-zarr"
+    append_value: False 
+    default: False
+    cli_tag: "--save_omezarr"
+    optional: True
+    section_id: "output-args"
+    mode: "beginner"
+  - name: save_dir
+    type: textbox
+    label: "Save Directory"
+    description: "directory to save output files"
+    output_dir_set: True
+    default: "/output_images"
+    cli_tag: "--savedir"
+    optional: True
+    section_id: "output-args"
+    mode: "advanced"
+
+# Display_only Section
+display_only:
+  # dummy example : DONOT PUT CLI_TAG FLAG AT ALL. THESE ARE JUST FOR DISPLAY
