@@ -1,8 +1,8 @@
 # Based on example https://github.com/bilayer-containers/bilayers/blob/main/algorithms/cellpose_inference/config.yaml
 
 docker_image:
-  org: Cellular-Imaging-Amsterdam-UMC
-  name: W_MitoSegmentation
+  org: cellularimagingcf
+  name: w_mitosegmentation
   tag: "1.0.0"
   platform: "linux/amd64"
 
