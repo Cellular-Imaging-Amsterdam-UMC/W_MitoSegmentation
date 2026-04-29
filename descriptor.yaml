@@ -3,7 +3,7 @@
 docker_image:
   org: cellularimagingcf
   name: w_mitosegmentation
-  tag: "1.0.0"
+  tag: "v0.0.1"
   platform: "linux/amd64"
 
 algorithm_folder_name: "W_MitoSegmentation"
