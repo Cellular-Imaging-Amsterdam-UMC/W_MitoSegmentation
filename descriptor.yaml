@@ -8,7 +8,7 @@ citations:
 docker_image:
   org: cellularimagingcf
   name: w_mitosegmentation
-  tag: "v0.0.3"
+  #tag: "v0.0.3"
   platform: "linux/amd64"
 
 algorithm_folder_name: "W_MitoSegmentation"
@@ -58,8 +58,6 @@ inputs:
     cli_order: 0
     default: "single"
     optional: True
-    format: 
-      - unix
     folder_name: "/models"
     file_count: "single"
     unique_string:
@@ -68,13 +66,13 @@ inputs:
     mode: "advanced"
 
 outputs:
-  - name: omezarr_images
+  - name: segmented_labels
     type: image
     label: "Segmented Ome-zarr images"
     subtype: 
       - label
     description: "Segmented image if --save_omezarr flag is true."
-    cli_tag: "None"
+    cli_tag: "--segmented_labels"
     cli_order: 0
     default: "directory"
     optional: True
