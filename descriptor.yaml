@@ -24,7 +24,7 @@ exec_function:
     #   cli_order: 3
 
 inputs:
-  - name: dir
+  - name: input_images
     type: image
     label: "Input Image Directory"
     subtype: 
@@ -32,7 +32,7 @@ inputs:
       - color
       - binary
     description: "Path to the directory of input images"
-    cli_tag: "--dir"
+    cli_tag: "--input_images"
     cli_order: 0
     default: "directory"
     optional: False
@@ -42,8 +42,6 @@ inputs:
       - omezarr
     folder_name: "/input_images"
     file_count: "multiple"
-    unique_string:
-      - "*"
     section_id: "inputs"
     mode: "beginner"
     depth: True
@@ -60,8 +58,6 @@ inputs:
     optional: True
     folder_name: "/models"
     file_count: "single"
-    unique_string:
-      - "*"
     section_id: "inputs"
     mode: "advanced"
 
@@ -80,8 +76,6 @@ outputs:
       - omezarr
     folder_name: "/output_images"
     file_count: "single"
-    unique_string:
-      - "_cp_masks"
     section_id: "outputs"
     mode: "beginner"
     depth: True
