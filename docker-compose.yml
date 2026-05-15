@@ -1,0 +1,5 @@
+services:
+  main:
+    build: https://github.com/NL-BioImaging/fair-segmentation.git#main
+    ports:
+    - "9876:9876"

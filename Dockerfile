@@ -1,2 +1,2 @@
-# Base image with Python 3.12
-FROM python:3.12-slim
+# Use local container: build empanada-napari-xpra locally first
+FROM empanada-napari-xpra
