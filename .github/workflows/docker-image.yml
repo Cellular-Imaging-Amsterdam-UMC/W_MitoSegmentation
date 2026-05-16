@@ -43,7 +43,7 @@ jobs:
       uses: docker/setup-compose-action@v2
     -
       name: Compose
-      run: docker-compose -f "docker-compose.yml" up -d --build
+      run: docker compose -f "docker-compose.yml"
     -
       name: Build and push
       uses: docker/build-push-action@v5
