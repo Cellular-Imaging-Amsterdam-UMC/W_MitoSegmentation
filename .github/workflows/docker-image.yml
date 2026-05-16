@@ -39,6 +39,9 @@ jobs:
           type=semver,pattern=v{{version}}
           type=semver,pattern=v{{major}}.{{minor}}
     -
+      name: Set up Docker Compose
+      uses: docker/setup-compose-action@v2
+    -
       name: Compose
       run: docker-compose -f "docker-compose.yml" up -d --build
     -
