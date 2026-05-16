@@ -39,11 +39,13 @@ jobs:
           type=semver,pattern=v{{version}}
           type=semver,pattern=v{{major}}.{{minor}}
     -
-      name: Build and push
+      name: Compose
       run: docker-compose -f "docker-compose.yml" up -d --build
+    -
+      name: Build and push
+      uses: docker/build-push-action@v5
       with:
         context: "{{defaultContext}}"
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
-
