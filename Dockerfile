@@ -1,11 +1,16 @@
-# Use local container: build empanada-napari-xpra locally first
-FROM empanada-napari-xpra AS biomero-mito-segmentation
+# Base image with Python 3.12
+FROM python:3.12-slim
 
-EXPOSE 9876
+# Set working directory
+WORKDIR /app
+
+# Copy project files
+COPY *.py .
+
+# Expose as a CLI
+ENTRYPOINT ["python", "/app/main.py"]
 
 
-
-# Build:
 # docker build -t biomero-mito-segmentation .
-# Run:
-# docker run -p 9876:9876 biomero-mito-segmentation
+
+# docker run --rm -v "C:\Project\slides\DB:/data" biomero-mito-segmentation --inputfile "/data/TestRon.ome.zarr" --outputfolder "/data/output" --show_progress
